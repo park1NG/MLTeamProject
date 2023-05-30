@@ -1,4 +1,4 @@
-Year,Month,Day,Count,C:\ml23-1\prefinal\distance2019,C:\ml23-1\prefinal\temperture2019,C:\ml23-1\prefinal\windpower2019
+Year,Month,Day,Count,distance2019,temperture2019,windpower2019
 2019,1,1,1,10000.0,-6.340000000000001,3.0
 2019,1,1,2,10000.0,-5.966666666666668,2.5
 2019,1,1,3,10000.0,-1.6,10.333333333333334
