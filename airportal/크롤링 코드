@@ -1,0 +1,70 @@
+from urllib.request import urlretrieve
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import pandas as pd
+from datetime import datetime, timedelta
+import time
+start = '20190101'
+date_format = '%Y%m%d'
+end = '20191231'
+
+start_date = datetime.strptime(start,date_format)
+end_date = datetime.strptime(end,date_format)
+path = '/Users/kwy/Documents/2023-1학기/기계학습/crawling' # chromedriver의 절대경로
+driver = webdriver.Chrome("./chromedriver.exe")
+timestamp=[]
+airline = []
+flight_number = []
+destination = []
+departure_time = []
+arrival_time = []
+duration = []
+category = []
+status = []
+date = start_date
+while date <= end_date:
+    str = datetime.strftime(date,date_format)
+    url = 'https://www.airportal.go.kr/life/airinfo/RbHanList.jsp?depArr=D&current_date='+str+'&airport=RKSI&al_icao=&fp_id='
+    
+    driver.get(url) # url 접속
+    time.sleep(5)
+    text = driver.find_element(By.CSS_SELECTOR,"body > form > table > tbody > tr > td > table > tbody").text
+    
+    #converted_text = text.replace('&nbsp;', '[nbsp]')
+    rows = text.split("\n")
+    
+    for row in rows:
+        features = row.split("   ")
+        if len(features)!=8:
+            continue
+        if features[6]!="여객":
+            continue
+        timestamp.append(date)
+        airline.append(features[0])
+        flight_number.append(features[1])
+        destination.append(features[2])
+        departure_time.append(features[3])
+        arrival_time.append(features[4])
+        duration.append(features[5])
+        category.append(features[6])
+        status.append(features[7])
+    date = date + timedelta(days=1)
+    
+
+    
+
+data={
+    '연월일':timestamp,
+    '항공사':airline,
+    '편명':flight_number,
+    '도착지':destination,
+    '계획':departure_time,
+    '예상':arrival_time,
+    '실제':duration,
+    '구분':category,
+    '현황':status
+}
+df = pd.DataFrame(data)
+
+print(df)
+df.to_csv("./airportal.csv",index=None)
