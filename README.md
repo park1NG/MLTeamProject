@@ -17,10 +17,10 @@
 
 ### Dataset 
   0. 0th dataset: 항공정보포탈(https://airportal.go.kr)의 데이터 크롤링
-  1. 1st dataset: 항공기상청(https://amo.kma.go.kr)의 데이터 추가
-      * 가시거리, 온도, 풍속 feature 추가
-  2. 2nd dataset: 인천국제공항공사(https://www.airport.kr)의 데이터 추가
+  1. 1st dataset: 인천국제공항공사(https://www.airport.kr)의 데이터 추가
       * 시간별 복잡도 feature 추가
+  2. 2nd dataset: 항공기상청(https://amo.kma.go.kr)의 데이터 추가
+      * 가시거리, 온도, 풍속 feature 추가
   3. 3rd dataset: Holiday feature 추가
       * 평일과 주말을 구분하는 feature와 공휴일 feature 추가
       
