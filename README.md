@@ -12,8 +12,8 @@
 * Train data: 2016~2018년 인천국제공항에서 출발(혹은 지연출발)한 모든 국제선
 * Test data: 2019년 인천국제공항에서 출발(혹은 지연출발)한 모든 국제선
     * Covid-19에 의한 영향을 받기 전의 data를 사용하기 위함
-* Train sample: 487,399개
-* Test sample: 182,019개
+* Train sample: 약 48만 개
+* Test sample: 약 18만 개
 
 ### Dataset 
   0. 0th dataset: 항공정보포탈(https://airportal.go.kr)의 데이터 크롤링
